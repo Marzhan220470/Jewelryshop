@@ -32,16 +32,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-// Product class for Catalogue part
+
 class Product {
   private int id;
   private String name;
   private double price;
   private String description;
 
-  // getters and setters...
-
-  // other methods...
+  
 }
 
 // Observer pattern
@@ -88,7 +86,7 @@ public class JewelryShop {
   private static JewelryShop instance;
 
   private JewelryShop() {
-    // private constructor to prevent instantiation
+    
   }
 
   public static JewelryShop getInstance() {
@@ -116,7 +114,7 @@ public class JewelryShop {
     return DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
   }
 
-  // Get a list of all products in the shop
+  
   public List<Product> getAllProducts() {
     List<Product> products = new ArrayList<>();
 
@@ -138,7 +136,7 @@ public class JewelryShop {
     return products;
   }
 
-  // Add a new product to the shop
+  // Adding a new product to the shop
   public void addProduct(Product product) {
     try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(INSERT_PRODUCT_QUERY)) {
       stmt.setString(1, product.getName());
@@ -207,10 +205,7 @@ public class JewelryShop {
       System.out.println("Phone");
       String phone = sc.nextLine();
 
-      // RegistrationDAO registrationDAO = new RegistrationDAO();
-      // registrationDAO.registerUser(name, surname, phone);
-
-      // Create a command for adding a product
+   
       Product newProduct = jewelryShop.createProduct("New Product", 99.99, "Description of the new product");
       Command addProductCommand = new AddProductCommand(jewelryShop, newProduct);
       addProductCommand.execute();
